@@ -1,0 +1,32 @@
+
+  int red = 3;
+  int green = 4;
+  int blue = 5;
+  
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(red, OUTPUT);
+  pinMode(green, OUTPUT);
+  pinMode(blue, OUTPUT);
+  
+  pinMode(10, INPUT);
+  
+  Serial.begin(9600);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  unsigned int volumn;
+  volumn = analogRead(4);
+  Serial.print(volumn);
+  Serial.println();
+
+  unsigned int out = volumn -200;
+  analogWrite(red,  out);
+  analogWrite(green,  out);
+  analogWrite(blue, out);
+  
+  delay(20);
+}
